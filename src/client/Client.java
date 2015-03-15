@@ -40,9 +40,7 @@ public class Client {
         
         String userInput = null;
         while ((userInput = userIn.readLine()) != null) {
-            System.out.println("sending message to server: " + userIn.readLine());
-            socketOut.println("[" + username + "]: " + userIn.readLine());
-            System.out.println("finished sending message to server: " + userIn.readLine());
+            socketOut.println("[" + username + "]: " + userInput);
         }
     }
 }

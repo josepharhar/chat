@@ -27,9 +27,11 @@ public class ClientListener implements Runnable {
         
         String serverIn = null;
         try {
+            System.out.println("waiting for input from server");
             while ((serverIn = socketIn.readLine()) != null) {
                 client.recieveMessage(serverIn);
             }
+            System.out.println("Stopped waiting for input from server!!! BAD");
         } catch (IOException e) {
             //TODO: reconnect to server here? like client.reconnect()
             System.out.println("IOException: unable to read from server");

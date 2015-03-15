@@ -36,7 +36,7 @@ public class Chat {
         options.addOption("server", false, "Run chat as a server");
         options.addOption("port", true, "The port to connect on");
         options.addOption("hostname", true, "The server to connect to");
-        options.addOption("username", false, "Your username");
+        options.addOption("username", true, "Your username");
         
         CommandLineParser parser = new BasicParser();
         CommandLine cmd = parser.parse(options, args);

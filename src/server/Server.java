@@ -29,20 +29,16 @@ public class Server {
     
     // Make a new client, start it, and add it to the list
     public void addClient(Socket clientSocket) throws IOException {
-        System.out.println("adding client...");
         ClientConnection newClient = new ClientConnection(this, clientSocket);
-        System.out.println("finished instantiating new ClientConnection");
         new Thread(newClient).start();
-        System.out.println("finished running new thread");
         clients.add(newClient);
-        System.out.println("finished adding client");
+        System.out.println("added client");
     }
     
     public void sendMessage(String message) {
-        System.out.println("sending message to clients: " + message);
+        System.out.println(message);
         for (ClientConnection client : clients) {
             client.sendMessage(message);
         }
-        System.out.println("finished sending message to clients: " + message);
     }
 }
