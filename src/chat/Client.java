@@ -9,15 +9,17 @@ import java.net.Socket;
 public class Client {
     private String hostname;
     private int port;
+    private String username;
     
     private Socket socket;
     private PrintWriter socketOut;
     private BufferedReader socketIn;
     private BufferedReader userIn;
     
-    public Client(String hostname, int port) {
+    public Client(String hostname, int port, String username) {
         this.hostname = hostname;
         this.port = port;
+        this.username = username;
         
         try {
             socket = new Socket(hostname, port);
@@ -35,6 +37,8 @@ public class Client {
     }
     
     public void run() throws IOException {
+        System.out.println("Starting client on " + hostname + " port " + port);
+        
         String userInput;
         while ((userInput = userIn.readLine()) != null) {
             socketOut.println(userInput);

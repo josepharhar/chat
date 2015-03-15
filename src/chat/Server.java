@@ -31,6 +31,8 @@ public class Server {
     }
     
     public void run() throws IOException {
+        System.out.println("Starting server on port " + port);
+        
         String inputLine;
 
         while ((inputLine = clientIn.readLine()) != null) {
