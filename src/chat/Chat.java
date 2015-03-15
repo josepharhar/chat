@@ -8,6 +8,9 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
+import server.Server;
+import client.Client;
+
 public class Chat {
     
     public static void main(String[] args) {
@@ -18,7 +21,7 @@ public class Chat {
             e.printStackTrace();
             System.exit(1);
         } catch (IOException e) {
-            System.out.println("IOException.");
+            System.out.println("IOException");
             e.printStackTrace();
         } catch (NumberFormatException e) {
             System.out.println("unable to parse port");
@@ -40,16 +43,17 @@ public class Chat {
         
         String hostname = cmd.getOptionValue("hostname");
         String username = cmd.hasOption("username") ? cmd.getOptionValue("username") : "anon";
+        System.out.println(username);
         int port = Integer.parseInt(cmd.getOptionValue("port"));
         
         if (cmd.hasOption("server")) {
             // Running as Server
             Server server = new Server(port);
-            server.run();
+            server.start();
         } else {
             // Running as Client
             Client client = new Client(hostname, port, username);
-            client.run();
+            client.start();
         }
     }
 }
