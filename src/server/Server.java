@@ -38,7 +38,7 @@ public class Server {
     public void sendMessage(String message) {
         System.out.println(message);
         for (ClientConnection client : clients) {
-            client.sendMessage(message);
+            new Thread(() -> client.sendMessage(message)).start();
         }
     }
 }
